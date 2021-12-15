@@ -5,7 +5,7 @@ Javascript client for vtiger.com Rest API.
 ## Installation
 
 ```bash
-npm i @bowbridge/vtiger-js # or yarn start
+npm i @bowbridge/vtiger-js # or yarn add @bowbridge/vtiger-js
 ```
 
 ## Peer Dependencies

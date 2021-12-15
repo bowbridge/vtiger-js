@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -18,7 +18,8 @@
     "prepare": "tsdx build",
     "commit": "git-cz",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "semantic-release": "semantic-release"
   },
   "peerDependencies": {
     "axios": "^0.24.0"
@@ -59,11 +60,16 @@
     "size-limit": "^7.0.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "semantic-release": "^18.0.1"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bowbridge/vtiger-js.git"
   }
 }
