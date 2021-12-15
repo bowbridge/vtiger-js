@@ -1,0 +1,30 @@
+export type Email = {
+  date_start: string
+  subject: string
+  description: string
+  from_email: string
+  parent_type: string
+  saved_toid: string
+  ccmail: string
+  bccmail: string
+  assigned_user_id: string
+  parent_id: string
+  access_count: string
+  email_flag: string
+  time_start: string
+  createdtime: string
+  modifiedtime: string
+  modifiedby: string
+  source: string
+  click_count: string
+  starred: string
+  mailboxemail: string
+  templateid: string
+  threadid: string
+  messageid: string
+  failreason: string
+  inreplyto: string
+  from_name: string
+  id: string
+  isclosed: boolean
+}

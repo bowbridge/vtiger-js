@@ -1,0 +1,35 @@
+export type PrintTemplate = {
+  name: string
+  related_modulename: string
+  description: string
+  is_default: boolean
+  is_deletable: boolean
+  createdtime: string
+  modifiedtime: string
+  assigned_user_id: string
+  modifiedby: string
+  source: string
+  watermark_color: string
+  is_active: boolean
+  page_format: string
+  page_orientation: string
+  margin_left: number
+  margin_right: number
+  margin_top: number
+  margin_bottom: number
+  watermark_active: boolean
+  watermark: string
+  filename: string
+  consider_my_pref: string
+  currency_decimal_separator: string
+  currency_grouping_pattern: string
+  currency_grouping_separator: string
+  no_of_currency_decimals: number
+  currency_symbol_placement: string
+  truncate_trailing_zeros: string
+  header: string
+  data: string
+  footer: string
+  id: string
+  isclosed: boolean
+}

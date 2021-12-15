@@ -1,0 +1,32 @@
+export type LineItem = {
+  parent_id: string
+  productid: string
+  sequence_no: number
+  quantity: number
+  listprice: number
+  discount_percent: number
+  discount_amount: number
+  comment: string
+  description: string
+  tax1: number
+  tax2: number
+  tax3: number
+  incrementondel: boolean
+  id: string
+  tax4: number
+  image: string
+  purchase_cost: number
+  margin: number
+  netprice: number
+  section_no: number
+  section_name: string
+  margin_percentage: number
+  markup_percentage: number
+  delivered_qty: number
+  outstanding_qty: number
+  received_qty: number
+  billing_type: string
+  duration: number
+  cf_creditnotes_reason: string
+  unit_purchase_cost: string
+}

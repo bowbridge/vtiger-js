@@ -1,0 +1,40 @@
+export type Document = {
+  notes_title: string
+  document_source: string
+  assigned_user_id: string
+  folderid: string
+  fileversion: string
+  note_no: string
+  createdtime: string
+  modifiedtime: string
+  modifiedby: string
+  cf_send_notification: string
+  cf_765: string
+  cf_767: string
+  created_user_id: string
+  source: string
+  starred: string
+  tags: string
+  record_currency_id: string
+  record_conversion_rate: string
+  isclosed: boolean
+  filelocationtype: string
+  filestatus: string
+  filename: string
+  filesize: string
+  filetype: string
+  filedownloadcount: number
+  share_count: number
+  email_open_count: number
+  open_count: number
+  shared_download_count: number
+  reshares_count: number
+  unique_open_count: number
+  deal_conversion_rate: number
+  avg_time_spent: number
+  total_time_spent: number
+  document_type: string
+  notecontent: string
+  id: string
+  record_currency_symbol: string | null
+}
