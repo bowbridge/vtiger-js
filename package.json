@@ -16,13 +16,20 @@
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
+    "commit": "git-cz",
     "size": "size-limit",
     "analyze": "size-limit --why"
+  },
+  "peerDependencies": {
+    "axios": "^0.24.0"
   },
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "prettier": {
     "printWidth": 80,
@@ -30,8 +37,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "vtiger-js",
-  "author": "bowbridge software GmbH",
+  "name": "@bowbridge/vtiger-js",
+  "author": "bowbridge Software GmbH",
+  "description": "Javascript client for vtiger.com Rest API",
   "module": "dist/vtiger-js.esm.js",
   "size-limit": [
     {
@@ -46,10 +54,16 @@
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.4",
     "axios": "^0.24.0",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^7.0.4",
     "size-limit": "^7.0.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "typescript": "^4.5.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
