@@ -19,7 +19,7 @@
     "commit": "git-cz",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release --branches main"
   },
   "peerDependencies": {
     "axios": "^0.24.0"
@@ -57,11 +57,11 @@
     "axios": "^0.24.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^7.0.4",
+    "semantic-release": "^18.0.1",
     "size-limit": "^7.0.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.4",
-    "semantic-release": "^18.0.1"
+    "typescript": "^4.5.4"
   },
   "config": {
     "commitizen": {
