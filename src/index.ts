@@ -80,10 +80,14 @@ export type {
   WatchPoint,
 }
 
-export const createClient = (
+const createClient = (
   url: string,
   username: string,
   accesskey: string
 ): VTigerClient => {
   return new VTigerClient(getAxiosInstance(url, username, accesskey))
+}
+
+export {
+  createClient, VTigerClient
 }
