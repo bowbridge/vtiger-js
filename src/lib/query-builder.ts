@@ -1,25 +1,45 @@
-import { FindOneParams, FindParams } from '../types';
+import { SelectParams } from '../types';
 
 export class QueryBuilder<T> {
-  public find = (params: FindParams<T>): string => {
-    const columns = params.columns as string[];
-    const { from, where, limit } = params;
+  public select = (params: SelectParams<T>): string => {
+    const { from } = params;
 
-    const query = `select ${columns ? `${columns.join()}` : `*`} from ${from} ${
-      where ? `where ${where.column}  like '%${where.like}%'` : ``
-    } ${limit ? `limit ${limit}` : ``};`;
+    const query = `select ${this._handleFields(
+      params
+    )} from ${from}${this._handleWhere(params)}${this._handleLimit(params)};`;
 
     return query;
   };
 
-  public findOne = (params: FindOneParams<T>): string => {
-    const columns = params.columns as string[];
-    const { from, id } = params;
+  _handleFields = (data: Pick<SelectParams<T>, 'fields'>): string => {
+    const fields = data.fields as string[];
+    return fields ? fields.join() : '*';
+  };
 
-    const query = `select ${
-      columns ? `${columns.join()}` : `*`
-    } from ${from} where id=${id};`;
+  _handleLimit = (data: Pick<SelectParams<T>, 'limit'>): string => {
+    return data.limit ? ` limit ${data.limit}` : ``;
+  };
 
-    return query;
+  _handleWhere = (data: Pick<SelectParams<T>, 'where'>): string => {
+    if (data.where) {
+      const { operator, field, value } = data.where;
+
+      switch (operator) {
+        case 'like':
+          return ` where ${field} like '%${value}%'`;
+
+        case 'equalTo':
+          if (typeof value === 'string') {
+            return ` where ${field}='${value}'`;
+          } else {
+            return ` where ${field}=${value}`;
+          }
+
+        default:
+          return 'manipulating';
+      }
+    } else {
+      return '';
+    }
   };
 }
