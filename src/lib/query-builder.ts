@@ -1,4 +1,4 @@
-import { SelectParams } from '../types';
+import { SelectParams } from './types';
 
 export class QueryBuilder<T> {
   public select = (params: SelectParams<T>): string => {

@@ -1,7 +1,7 @@
 import { AxiosInstance, AxiosPromise, AxiosResponse } from 'axios';
-import { EndPoint } from './endpoint';
+import { EndPoint } from './base/endpoints';
 import { QueryBuilder } from './query-builder';
-import { ListTypeResponse, SelectParams, Me, Result } from '../types';
+import { ListTypeResponse, SelectParams, Me, Result } from './types';
 export class VTigerClient {
   private API: AxiosInstance;
 
