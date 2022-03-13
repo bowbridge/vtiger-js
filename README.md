@@ -5,11 +5,11 @@ Javascript client for vtiger.com Rest API.
 ## Installation
 
 ```bash
-npm i @bowbridge/vtiger-js
+npm i @bowbridge/vtiger-js axios
 
  or
 
-yarn add @bowbridge/vtiger-js
+yarn add @bowbridge/vtiger-js axios
 ```
 
 ## Peer Dependencies
@@ -22,28 +22,19 @@ First class Typescript Support
 
 ### Example
 
-```js
+```ts
 import { createClient } from '@bowbridge/vtiger-js';
 
 const vtiger = createClient(url, username, password);
 
-const getContacts = async () => {
-  await vtiger
-    .select({
-      from: 'Accounts',
-      fields: ['accountname', 'accounttype'],
-      where: {
-        field: 'id',
-        operator: 'equalTo',
-        value: '3x16554',
-      },
-    })
-    .then(res => {
-      res.data.result.forEach(acc => {
-        console.log(acc.accountname);
-      });
+vtiger
+  .from<Account>('Accounts')
+  .select(['accountname', 'accountstatus'])
+  .where('id', '=', '3x16554')
+  .get()
+  .then(res => {
+    res.data.result.forEach(acc => {
+      console.log(acc.accountname);
     });
-};
-
-getContacts();
+  });
 ```
