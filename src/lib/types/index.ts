@@ -144,20 +144,9 @@ export type Me = {
   id: string;
 };
 
-type SQL_OPERATOR = 'like' | 'equalTo';
-
-export type SelectParams<T> = {
-  from: StandardListType;
-  fields?: (keyof T)[];
-  where?: {
-    field: keyof T;
-    operator: SQL_OPERATOR;
-    value: string | number;
-  };
-  limit?: number;
-};
-
-export type Result<T> = {
+export type VtigerApiResult<T> = {
   success: boolean;
   result: T;
 };
+
+export type FilterOperator = '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like';

@@ -1,35 +1,38 @@
 import { AxiosInstance, AxiosPromise, AxiosResponse } from 'axios';
 import { EndPoint } from './base/endpoints';
-import { QueryBuilder } from './query-builder';
-import { ListTypeResponse, SelectParams, Me, Result } from './types';
+import {
+  ListTypeResponse,
+  Me,
+  VtigerApiResult,
+  StandardListType,
+} from './types';
+import { VtigerQueryBuilder } from './vtiger-query-builder';
 export class VTigerClient {
-  private API: AxiosInstance;
+  private httpClient: AxiosInstance;
 
   constructor(axiosInstance: AxiosInstance) {
-    this.API = axiosInstance;
+    this.httpClient = axiosInstance;
   }
 
-  public select = async <T>(
-    params: SelectParams<T>
-  ): Promise<AxiosResponse<Result<T[]>>> => {
-    const builder = new QueryBuilder<T>();
-
-    const query = builder.select(params);
-
-    return await this.API.get<{ success: boolean; result: T[] }>(
-      EndPoint.query,
-      {
-        params: { query },
-      }
-    );
-  };
+  /**
+   *
+   * @param module CRM module name
+   * @returns
+   */
+  public from<T = any>(module: StandardListType): VtigerQueryBuilder<T> {
+    return new VtigerQueryBuilder<T>(module, this.httpClient);
+  }
 
   public getAllLists = (): AxiosPromise<ListTypeResponse> => {
-    return this.API.get<ListTypeResponse>(EndPoint.listtypes);
+    return this.httpClient.get<ListTypeResponse>(EndPoint.listtypes);
   };
 
-  public getMe = async (): Promise<AxiosResponse<Result<Me>>> => {
-    return await this.API.get(EndPoint.me);
+  /**
+   *
+   * @returns Authenticated user
+   */
+  public getMe = async (): Promise<AxiosResponse<VtigerApiResult<Me>>> => {
+    return await this.httpClient.get(EndPoint.me);
   };
 
   /**
@@ -39,8 +42,8 @@ export class VTigerClient {
    */
   public retrieve = async (
     record_id: string
-  ): Promise<AxiosResponse<Result<any>>> => {
-    return await this.API.get(`${EndPoint.retrieve}?id=${record_id}`);
+  ): Promise<AxiosResponse<VtigerApiResult<any>>> => {
+    return await this.httpClient.get(`${EndPoint.retrieve}?id=${record_id}`);
   };
 
   /**
@@ -48,8 +51,10 @@ export class VTigerClient {
    * @param data should be JSON stringified object contains the id
    * @returns the updated object with the success flag
    */
-  public revise = async (data: string): Promise<AxiosResponse<Result<any>>> => {
-    return await this.API.post(EndPoint.revise, { element: data });
+  public revise = async (
+    data: string
+  ): Promise<AxiosResponse<VtigerApiResult<any>>> => {
+    return await this.httpClient.post(EndPoint.revise, { element: data });
   };
 
   /**
@@ -57,7 +62,15 @@ export class VTigerClient {
    * @param data should be JSON stringified object contains the id with the mandatory fields.
    * @returns the updated object with the success flag.
    */
-  public update = async (data: string): Promise<AxiosResponse<Result<any>>> => {
-    return await this.API.post(EndPoint.update, { element: data });
+  public update = async (
+    data: string | object
+  ): Promise<AxiosResponse<VtigerApiResult<any>>> => {
+    return await this.httpClient.post(EndPoint.update, {
+      element: this._sanitaizeData(data),
+    });
+  };
+
+  private _sanitaizeData = (data: string | object): string => {
+    return typeof data === 'string' ? data : JSON.stringify(data);
   };
 }
