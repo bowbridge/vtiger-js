@@ -39,6 +39,8 @@ import { ServiceContract } from "./lib/types/modules/service-contract"
 import { SLA } from "./lib/types/modules/sla"
 import { Tax } from "./lib/types/modules/tax"
 import { WatchPoint } from "./lib/types/modules/watch-point"
+import { VTIGER_API_USAGE } from "./lib/types"
+
 
 export type {
   Account,
@@ -78,6 +80,7 @@ export type {
   Tax,
   User,
   WatchPoint,
+  VTIGER_API_USAGE
 }
 
 /**
@@ -97,5 +100,5 @@ const createClient = (
 }
 
 export {
-  createClient, VTigerClient
+  createClient, VTigerClient 
 }

@@ -150,3 +150,13 @@ export type VtigerApiResult<T> = {
 };
 
 export type FilterOperator = '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like';
+
+export type VTIGER_API_USAGE = {
+  dailylimit: string;
+  remaining: string;
+  reset: string;
+  floodcontrolMinutelimit: string;
+  floodcontrolRemaining: string;
+  floodcontrolReset: string;
+  vtigerVersion: string;
+};
