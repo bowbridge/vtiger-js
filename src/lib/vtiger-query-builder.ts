@@ -6,7 +6,8 @@ import { VtigerFilterBuilder } from './vtiger-filter-builder';
 export class VtigerQueryBuilder<T> extends VtigerClientHelper<T> {
   constructor(
     private moudle: StandardListType,
-    private httpClient: AxiosInstance
+    private httpClient: AxiosInstance,
+    private debug: boolean
   ) {
     super();
   }
@@ -14,6 +15,6 @@ export class VtigerQueryBuilder<T> extends VtigerClientHelper<T> {
   select(fields?: Array<keyof T>): VtigerFilterBuilder<T> {
     const query = `select ${this._handleFields(fields)} from ${this.moudle}`;
 
-    return new VtigerFilterBuilder<T>(query, this.httpClient);
+    return new VtigerFilterBuilder<T>(query, this.httpClient, this.debug);
   }
 }

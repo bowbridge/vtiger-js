@@ -10,7 +10,7 @@ import { VtigerQueryBuilder } from './vtiger-query-builder';
 export class VTigerClient {
   private httpClient: AxiosInstance;
 
-  constructor(axiosInstance: AxiosInstance) {
+  constructor(axiosInstance: AxiosInstance, private debug: boolean) {
     this.httpClient = axiosInstance;
   }
 
@@ -20,7 +20,7 @@ export class VTigerClient {
    * @returns
    */
   public from<T = any>(module: StandardListType): VtigerQueryBuilder<T> {
-    return new VtigerQueryBuilder<T>(module, this.httpClient);
+    return new VtigerQueryBuilder<T>(module, this.httpClient, this.debug);
   }
 
   public getAllLists = (): AxiosPromise<ListTypeResponse> => {

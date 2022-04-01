@@ -4,13 +4,19 @@ import { FilterOperator, VtigerApiResult } from './types';
 import { VtigerClientHelper } from './vtiger-client-helpers';
 
 export class VtigerFilterBuilder<T> extends VtigerClientHelper<T> {
-  constructor(private query: string, private httpClient: AxiosInstance) {
+  constructor(
+    private query: string,
+    private httpClient: AxiosInstance,
+    private debug: boolean
+  ) {
     super();
   }
 
   async get(): Promise<AxiosResponse<VtigerApiResult<T[]>>> {
     const query = `${this.query};`;
-    console.log(query);
+    if (this.debug) {
+      console.log(query);
+    }
 
     return new Promise<AxiosResponse<VtigerApiResult<T[]>>>(resolve => {
       this.httpClient

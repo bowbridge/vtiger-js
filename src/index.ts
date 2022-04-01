@@ -90,9 +90,10 @@ export type {
 const createClient = (
   url: string,
   username: string,
-  accesskey: string
+  accesskey: string,
+  debug: boolean
 ): VTigerClient => {
-  return new VTigerClient(getAxiosInstance(url, username, accesskey))
+  return new VTigerClient(getAxiosInstance(url, username, accesskey), debug)
 }
 
 export {
