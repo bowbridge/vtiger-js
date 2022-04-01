@@ -94,9 +94,15 @@ const createClient = (
   url: string,
   username: string,
   accesskey: string,
-  debug: boolean
+  debug?: boolean
 ): VTigerClient => {
-  return new VTigerClient(getAxiosInstance(url, username, accesskey), debug)
+
+  let debugStatus = false
+  
+  if(debug) {
+    debugStatus =debug
+  }
+  return new VTigerClient(getAxiosInstance(url, username, accesskey), debugStatus)
 }
 
 export {
