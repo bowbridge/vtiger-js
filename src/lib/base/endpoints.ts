@@ -1,21 +1,22 @@
-export const EndPoint = {
+export const EndPoint = Object.freeze({
   me: '/me',
   listtypes: '/listtypes?fieldTypeList=null',
   describe: '/describe',
   create: '/create',
   retrieve: '/retrieve',
-  decrypt: '/decrypt',
   update: '/update',
   revise: '/revise',
   delete: '/delete',
   query: '/query',
-  sync: 'sync',
-  convertLead: '/convertlead',
   relatedTypes: '/relatedtypes',
   retrieveRelated: '/retrieve_related',
+
+  //  ----- Todo -----
   queryRelated: '/query_related',
-  addRelated: '/add_related',
   deleteRelated: '/delete_related',
+  addRelated: '/add_related',
+  sync: 'sync',
+  convertLead: '/convertlead',
   reOpen: '/reopen',
   tagsAdd: '/tags_add',
   tagsRetrieve: '/tags_retrieve',
@@ -24,4 +25,5 @@ export const EndPoint = {
   lookup: '/lookup',
   getAccountHierarchy: '/get_account_hierarchy',
   search: '/lookup',
-};
+  decrypt: '/decrypt',
+});

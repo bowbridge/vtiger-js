@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosError, AxiosInstance } from 'axios';
+import axios, { AxiosRequestConfig, AxiosInstance, AxiosError } from 'axios';
 import { VTigerApiError } from '../types';
 
 export const getAxiosInstance = (

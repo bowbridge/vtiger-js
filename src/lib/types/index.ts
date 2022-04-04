@@ -5,15 +5,20 @@ export type VTigerApiError = {
 
 export type InformationType = Record<
   StandardListType,
-  { isEntity: boolean; label: string; singular: string }
+  {
+    isEntity: boolean;
+    label: string;
+    singular?: string;
+    name?: string;
+    translated_label?: string;
+    relation_id?: string;
+    actions?: string;
+  }
 >;
 
-export type ListTypeResponse = {
-  success: boolean;
-  result: {
-    types: StandardListType[];
-    information: InformationType;
-  };
+export type ListType = {
+  types: StandardListType[];
+  information: InformationType;
 };
 
 export type StandardListType =
@@ -145,6 +150,13 @@ export type Me = {
 };
 
 export type VtigerApiResult<T> = {
+  error?: VTigerApiError;
+  api_usage: VTIGER_API_USAGE;
+  success: boolean;
+  result: T;
+};
+
+export type VtigerApiResponse<T> = {
   success: boolean;
   result: T;
 };
