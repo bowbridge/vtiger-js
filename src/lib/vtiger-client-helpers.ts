@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { VTIGER_API_USAGE } from './types';
+import { VtigerApiResult, VTIGER_API_USAGE } from './types';
+import { VTIGER_API_ERROR } from './vtiger-error-response';
 
 export abstract class VtigerClientHelper {
   protected _generateApiUsageObject = (
@@ -16,5 +17,19 @@ export abstract class VtigerClientHelper {
     };
 
     return apiUsage;
+  };
+
+  protected _returnErrorHandler = <T>(err: any): VtigerApiResult<T> => {
+    const axiosResponseError = (err as unknown) as VTIGER_API_ERROR;
+
+    return {
+      error: {
+        code: axiosResponseError.code,
+        message: axiosResponseError.message,
+      },
+      result: null,
+      success: false,
+      api_usage: this._generateApiUsageObject(axiosResponseError.response),
+    };
   };
 }

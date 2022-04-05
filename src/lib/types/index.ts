@@ -152,7 +152,8 @@ export type Me = {
 export type VtigerApiResult<T> = {
   api_usage: VTIGER_API_USAGE;
   success: boolean;
-  result: T;
+  result: T | null;
+  error?: VTigerApiError;
 };
 
 export type VtigerApiResponse<T> = {

@@ -10,10 +10,10 @@ export const EndPoint = Object.freeze({
   query: '/query',
   relatedTypes: '/relatedtypes',
   retrieveRelated: '/retrieve_related',
+  deleteRelated: '/delete_related',
 
   //  ----- Todo -----
   queryRelated: '/query_related',
-  deleteRelated: '/delete_related',
   addRelated: '/add_related',
   sync: 'sync',
   convertLead: '/convertlead',

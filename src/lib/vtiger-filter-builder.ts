@@ -24,8 +24,13 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
           params: { query },
         })
         .then(res => {
-          const api_usage = this._generateApiUsageObject(res);
-          resolve({ ...res.data, api_usage });
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
         });
     });
   }

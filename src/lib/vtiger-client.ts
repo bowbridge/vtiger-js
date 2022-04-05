@@ -34,15 +34,20 @@ export class VTigerClient extends VtigerClientHelper {
    * @returns Details about the module accessible to users through this API.
    */
   public getAllLists = async (): Promise<VtigerApiResult<ListType>> => {
-    const res = await this.httpClient.get<VtigerApiResponse<ListType>>(
-      EndPoint.listtypes
-    );
-
-    return {
-      api_usage: this._generateApiUsageObject(res),
-      success: res.data.success,
-      result: res.data.result,
-    };
+    return new Promise<VtigerApiResult<ListType>>(resolve => {
+      this.httpClient
+        .get<VtigerApiResponse<ListType>>(EndPoint.listtypes)
+        .then(res => {
+          resolve({
+            api_usage: this._generateApiUsageObject(res),
+            success: res.data.success,
+            result: res.data.result,
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
   };
 
   /**
@@ -50,9 +55,19 @@ export class VTigerClient extends VtigerClientHelper {
    * @returns Authenticated user
    */
   public getMe = async (): Promise<VtigerApiResult<Me>> => {
-    const res = await this.httpClient.get<VtigerApiResponse<Me>>(EndPoint.me);
-
-    return { ...res.data, api_usage: this._generateApiUsageObject(res) };
+    return new Promise<VtigerApiResult<Me>>(resolve => {
+      this.httpClient
+        .get<VtigerApiResponse<Me>>(EndPoint.me)
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
   };
 
   /**
@@ -60,13 +75,20 @@ export class VTigerClient extends VtigerClientHelper {
    * @returns Current API Usage data
    */
   public getApiUsage = async (): Promise<VtigerApiResult<VTIGER_API_USAGE>> => {
-    const res = await this.httpClient.get(EndPoint.me);
-
-    return {
-      result: this._generateApiUsageObject(res),
-      success: true,
-      api_usage: this._generateApiUsageObject(res),
-    };
+    return new Promise<VtigerApiResult<VTIGER_API_USAGE>>(resolve => {
+      this.httpClient
+        .get(EndPoint.me)
+        .then(res => {
+          resolve({
+            result: this._generateApiUsageObject(res),
+            success: true,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
   };
 
   /**
@@ -77,11 +99,19 @@ export class VTigerClient extends VtigerClientHelper {
   public retrieve = async <MODULE = any>(
     record_id: string
   ): Promise<VtigerApiResult<MODULE>> => {
-    const res = await this.httpClient.get<VtigerApiResponse<MODULE>>(
-      `${EndPoint.retrieve}?id=${record_id}`
-    );
-
-    return { ...res.data, api_usage: this._generateApiUsageObject(res) };
+    return new Promise<VtigerApiResult<MODULE>>(resolve => {
+      this.httpClient
+        .get<VtigerApiResponse<MODULE>>(`${EndPoint.retrieve}?id=${record_id}`)
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
   };
 
   /**
@@ -92,11 +122,21 @@ export class VTigerClient extends VtigerClientHelper {
   public describe = async (
     module: StandardListType
   ): Promise<VtigerApiResult<ModuleDescription>> => {
-    const res = await this.httpClient.get<VtigerApiResponse<ModuleDescription>>(
-      `${EndPoint.describe}?elementType=${module}`
-    );
-
-    return { ...res.data, api_usage: this._generateApiUsageObject(res) };
+    return new Promise<VtigerApiResult<ModuleDescription>>(resolve => {
+      this.httpClient
+        .get<VtigerApiResponse<ModuleDescription>>(
+          `${EndPoint.describe}?elementType=${module}`
+        )
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
   };
 
   /**
@@ -108,12 +148,22 @@ export class VTigerClient extends VtigerClientHelper {
     module: StandardListType,
     data: string | object
   ): Promise<VtigerApiResult<MODULE>> => {
-    const res = await this.httpClient.post<VtigerApiResponse<MODULE>>(
-      EndPoint.create,
-      { elementType: module, element: this._sanitaizeData(data) }
-    );
-
-    return { ...res.data, api_usage: this._generateApiUsageObject(res) };
+    return new Promise<VtigerApiResult<MODULE>>(resolve => {
+      this.httpClient
+        .post<VtigerApiResponse<MODULE>>(EndPoint.create, {
+          elementType: module,
+          element: this._sanitaizeData(data),
+        })
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
   };
 
   /**
@@ -124,12 +174,21 @@ export class VTigerClient extends VtigerClientHelper {
   public revise = async <MODULE = any>(
     data: string | object
   ): Promise<VtigerApiResult<MODULE>> => {
-    const res = await this.httpClient.post<VtigerApiResponse<MODULE>>(
-      EndPoint.revise,
-      { element: this._sanitaizeData(data) }
-    );
-
-    return { ...res.data, api_usage: this._generateApiUsageObject(res) };
+    return new Promise<VtigerApiResult<MODULE>>(resolve => {
+      this.httpClient
+        .post<VtigerApiResponse<MODULE>>(EndPoint.revise, {
+          element: this._sanitaizeData(data),
+        })
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
   };
 
   /**
@@ -140,14 +199,21 @@ export class VTigerClient extends VtigerClientHelper {
   public update = async <MODULE = any>(
     data: string | object
   ): Promise<VtigerApiResult<MODULE>> => {
-    const res = await this.httpClient.post<VtigerApiResponse<MODULE>>(
-      EndPoint.update,
-      {
-        element: this._sanitaizeData(data),
-      }
-    );
-
-    return { ...res.data, api_usage: this._generateApiUsageObject(res) };
+    return new Promise<VtigerApiResult<MODULE>>(resolve => {
+      this.httpClient
+        .post<VtigerApiResponse<MODULE>>(EndPoint.update, {
+          element: this._sanitaizeData(data),
+        })
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
   };
 
   /**
@@ -158,12 +224,22 @@ export class VTigerClient extends VtigerClientHelper {
   public delete = async (
     id: string
   ): Promise<VtigerApiResult<{ status: string }>> => {
-    const res = await this.httpClient.post<{
-      success: boolean;
-      result: { status: string };
-    }>(EndPoint.delete, { id });
-
-    return { ...res.data, api_usage: this._generateApiUsageObject(res) };
+    return new Promise<VtigerApiResult<{ status: string }>>(resolve => {
+      this.httpClient
+        .post<{
+          success: boolean;
+          result: { status: string };
+        }>(EndPoint.delete, { id })
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
   };
 
   /**
@@ -179,14 +255,29 @@ export class VTigerClient extends VtigerClientHelper {
       information: Partial<InformationType>;
     }>
   > => {
-    const res = await this.httpClient.get<
-      VtigerApiResponse<{
+    return new Promise<
+      VtigerApiResult<{
         types: Partial<StandardListType[]>;
         information: Partial<InformationType>;
       }>
-    >(`${EndPoint.relatedTypes}?elementType=${module}`);
-
-    return { ...res.data, api_usage: this._generateApiUsageObject(res) };
+    >(resolve => {
+      this.httpClient
+        .get<
+          VtigerApiResponse<{
+            types: Partial<StandardListType[]>;
+            information: Partial<InformationType>;
+          }>
+        >(`${EndPoint.relatedTypes}?elementType=${module}`)
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
   };
 
   //GET endpoint/retrieve_related?id=record_id&relatedLabel=target_relationship_label&relatedType=target_moduleName
@@ -196,11 +287,49 @@ export class VTigerClient extends VtigerClientHelper {
     related_label: string,
     module: StandardListType
   ): Promise<VtigerApiResult<MODULE[]>> => {
-    const res = await this.httpClient.get<VtigerApiResponse<MODULE[]>>(
-      `${EndPoint.retrieveRelated}?id=${record_id}&relatedLabel=${related_label}&relatedType=${module}`
-    );
+    return new Promise<VtigerApiResult<MODULE[]>>(resolve => {
+      this.httpClient
+        .get<VtigerApiResponse<MODULE[]>>(
+          `${EndPoint.retrieveRelated}?id=${record_id}&relatedLabel=${related_label}&relatedType=${module}`
+        )
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
+  };
 
-    return { ...res.data, api_usage: this._generateApiUsageObject(res) };
+  /**
+   *
+   * @param sourceRecordId
+   * @param relatedRecordId
+   * @returns {success: true,  result: { status: "successful" }}
+   */
+  public deleteRelated = async (
+    sourceRecordId: string,
+    relatedRecordId: string
+  ): Promise<VtigerApiResult<{ status: string }>> => {
+    return new Promise<VtigerApiResult<{ status: string }>>(resolve => {
+      this.httpClient
+        .post<{
+          success: boolean;
+          result: { status: string };
+        }>(EndPoint.deleteRelated, { sourceRecordId, relatedRecordId })
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
   };
 
   private _sanitaizeData = (data: string | object): string => {

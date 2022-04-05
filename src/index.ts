@@ -80,7 +80,8 @@ export type {
   Tax,
   User,
   WatchPoint,
-  VTIGER_API_USAGE
+  VTIGER_API_USAGE,
+  
 }
 
 /**

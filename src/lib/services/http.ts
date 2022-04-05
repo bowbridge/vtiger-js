@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosInstance, AxiosError } from 'axios';
-import { VTigerApiError } from '../types';
+import { VTIGER_API_ERROR } from '../vtiger-error-response';
 
 export const getAxiosInstance = (
   url: string,
@@ -24,11 +24,7 @@ export const getAxiosInstance = (
     response => response,
     (error: AxiosError) => {
       if (error.response) {
-        const errorData: VTigerApiError = {
-          message: error.response.statusText,
-          code: error.response.status,
-        };
-        throw new Error(`${errorData.code} - ${errorData.message}`);
+        throw new VTIGER_API_ERROR(error.response);
       }
     }
   );
