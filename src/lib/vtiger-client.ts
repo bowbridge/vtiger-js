@@ -93,6 +93,27 @@ export class VTigerClient extends VtigerClientHelper {
 
   /**
    *
+   * @returns Get Data from raw Query
+   */
+  public getFromQuery = async <T = any>(rawQuery: string): Promise<VtigerApiResult<T>> => {
+    return new Promise<VtigerApiResult<T>>(resolve => {
+      this.httpClient
+        .get(`${EndPoint.query}?query=${rawQuery}`)
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
+  };
+
+
+  /**
+   *
    * @param record_id is a string of any  record id in the CRM
    * @returns a single object with the related values.
    */
