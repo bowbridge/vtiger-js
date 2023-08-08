@@ -71,7 +71,8 @@ export type StandardListType =
   | 'LineItem'
   | 'Tax'
   | 'ProductTaxes'
-  | 'Roles';
+  | 'Roles'
+  | 'vtcmcertificates';
 
 export type Me = {
   user_name: string;

@@ -1,0 +1,17 @@
+export type VTCMCertificate = {
+  fld_vtcmcertificatesname: string,
+  createdtime: string,
+  modifiedtime: string,
+  created_user_id: string,
+  assigned_user_id: string,
+  modifiedby: string,
+  vtcmcertificatesnumber: string,
+  source: string,
+  starred: string,
+  record_currency_id: string,
+  fld_expirationdate: string,
+  cf_vtcmcertificates_organization: string,
+  cf_vtcmcertificates_cn: string,
+  fld_certificatepem: string,
+  vtcmcertificatesid: string,
+}
