@@ -39,8 +39,8 @@ import { ServiceContract } from "./lib/types/modules/service-contract"
 import { SLA } from "./lib/types/modules/sla"
 import { Tax } from "./lib/types/modules/tax"
 import { WatchPoint } from "./lib/types/modules/watch-point"
+import { VTCMCertificate } from "./lib/types/modules/vtcmcertificate"
 import { VTIGER_API_USAGE } from "./lib/types"
-
 
 export type {
   Account,
@@ -80,8 +80,8 @@ export type {
   Tax,
   User,
   WatchPoint,
+  VTCMCertificate,
   VTIGER_API_USAGE,
-  
 }
 
 /**
