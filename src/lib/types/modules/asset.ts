@@ -3,7 +3,10 @@ export type Asset = {
   contact: string
   cf_assets_contactemail: string
   cf_assets_resellercontact: string
-  cf_assets_licensefileurl: string
+  "cf_assets_country": string,
+  "cf_assets_previous": string,
+  "cf_assets_renewedby": string,
+  "cf_assets_realm": string,
   product: string
   assetname: string
   cf_assets_features: string
@@ -26,12 +29,16 @@ export type Asset = {
   shippingtrackingnumber: number
   source: string
   createdtime: string
+  cf_assets_licensebinary: string
+  cf_assets_mappings: string
   modifiedby: string
   starred: string
   tags: string
   record_currency_id: string
   record_conversion_rate: string
   isclosed: boolean
+  cf_assets_signature: string,
+  cf_assets_deployment: string,
   description: string
   id: string
   record_currency_symbol: string | null
