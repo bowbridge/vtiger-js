@@ -40,6 +40,7 @@ import { SLA } from "./lib/types/modules/sla"
 import { Tax } from "./lib/types/modules/tax"
 import { WatchPoint } from "./lib/types/modules/watch-point"
 import { VTCMCertificate } from "./lib/types/modules/vtcmcertificate"
+import { VTCMRealm } from "./lib/types/modules/vtcmrealm"
 import { VTIGER_API_USAGE } from "./lib/types"
 
 export type {
@@ -81,6 +82,7 @@ export type {
   User,
   WatchPoint,
   VTCMCertificate,
+  VTCMRealm,
   VTIGER_API_USAGE,
 }
 

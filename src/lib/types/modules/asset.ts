@@ -3,10 +3,10 @@ export type Asset = {
   contact: string
   cf_assets_contactemail: string
   cf_assets_resellercontact: string
-  "cf_assets_country": string,
-  "cf_assets_previous": string,
-  "cf_assets_renewedby": string,
-  "cf_assets_realm": string,
+  cf_assets_country: string
+  cf_assets_previous: string
+  cf_assets_renewedby: string
+  cf_assets_realm: string
   product: string
   assetname: string
   cf_assets_features: string
