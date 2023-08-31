@@ -41,6 +41,7 @@ import { Tax } from "./lib/types/modules/tax"
 import { WatchPoint } from "./lib/types/modules/watch-point"
 import { VTCMCertificate } from "./lib/types/modules/vtcmcertificate"
 import { VTCMRealm } from "./lib/types/modules/vtcmrealm"
+import { VTCMSid } from "./lib/types/modules/vtcmsid"
 import { VTIGER_API_USAGE } from "./lib/types"
 
 export type {
@@ -83,6 +84,7 @@ export type {
   WatchPoint,
   VTCMCertificate,
   VTCMRealm,
+  VTCMSid,
   VTIGER_API_USAGE,
 }
 

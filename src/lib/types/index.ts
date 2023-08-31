@@ -73,7 +73,8 @@ export type StandardListType =
   | 'ProductTaxes'
   | 'Roles'
   | 'vtcmcertificates'
-  | 'vtcmrealms';
+  | 'vtcmrealms'
+  | 'vtcmsids';
 
 export type Me = {
   user_name: string;
