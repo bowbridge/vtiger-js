@@ -43,10 +43,55 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
    * @returns
    */
   where(field: keyof T, operator: FilterOperator, value: string) {
+    this.query = `${this.query} where ${String(field)} ${operator} '${this._handleValue(operator, value)}'`;
+    return this;
+  }
+
+  /**
+   *
+   * @param field key of the field
+   * @param operator '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like'
+   * @param value filter value as string
+   * @returns
+   */
+  and(field: keyof T, operator: FilterOperator, value: string) {
+    this.query = `${this.query} and ${String(field)} ${operator} '${this._handleValue(operator, value)}'`;
+    return this;
+  }
+
+  /**
+   *
+   * @param field key of the field
+   * @param operator '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like'
+   * @param value filter value as string
+   * @returns
+   */
+  or(field: keyof T, operator: FilterOperator, value: string) {
+    this.query = `${this.query} or ${String(field)} ${operator} '${this._handleValue(operator, value)}'`;
+    return this;
+  }
+
+  limit(rowCount: number = 100, offset: number = 0) {
+    if (rowCount < 0) {
+      rowCount = 100;
+    }
+
+    if (offset < 0) {
+      offset = 0;
+    }
+
+    if (offset) {
+      this.query = `${this.query} limit ${offset}, ${rowCount}`;
+    } else {
+      this.query = `${this.query} limit ${rowCount}`;
+    }
+    return this;
+  }
+
+  private _handleValue(operator: FilterOperator, value: string) {
     if (operator === 'like' && !value.includes('%')) {
       value = `%${value}%`;
     }
-    this.query = `${this.query} where ${field} ${operator} '${value}'`;
-    return this;
+    return value;
   }
 }
