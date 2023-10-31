@@ -7,6 +7,7 @@ export type Asset = {
   cf_assets_previous: string
   cf_assets_renewedby: string
   cf_assets_realm: string
+  cf_assets_sid: string
   product: string
   assetname: string
   cf_assets_features: string
