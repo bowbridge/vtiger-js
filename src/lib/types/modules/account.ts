@@ -15,19 +15,17 @@ export type Account = {
   industry: string
   rating: string
   accounttype: string
-  siccode: string
-  emailoptout: string
+  emailoptout: boolean
   annual_revenue: number
   annual_revenue_currency_value: number
   assigned_user_id: string
-  notify_owner: number
+  notify_owner: boolean
   modifiedtime: string
   modifiedby: string
   createdtime: string
   cf_771: string
   isconvertedfromlead: string
   cf_783: string
-  cf_797: string
   primary_twitter: string
   created_user_id: string
   source: string
@@ -49,8 +47,13 @@ export type Account = {
   smsoptin: string
   primary_phone_field: string
   primary_email_field: string
-  isclosed: number
-  sync_to_hubspot: number
+  isclosed: boolean
+  cf_accounts_licensecounter: number
+  siccode: string
+  cf_accounts_defaultrealm: string
+  sync_to_hubspot: boolean
+  cf_accounts_cloudsupport: boolean
+  cf_accounts_bowbridgecloudid: string
   bill_country: string
   ship_country: string
   bill_street: string
