@@ -73,4 +73,6 @@ export type Account = {
   imagename: string
   id: string
   record_currency_symbol: string
+  cf_accounts_logzioaccountid: string
+  cf_accounts_logziosubaccounttoken: string
 }
