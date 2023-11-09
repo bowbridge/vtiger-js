@@ -21,4 +21,6 @@ export type VTCMConfiguration = {
     id: string
     isclosed: boolean
     record_currency_symbol: string | null
+    cf_vtcmconfigurations_siddifference: string
+    cf_vtcmconfigurations_realmdifference: string
 }
