@@ -44,6 +44,7 @@ import { VTCMConfiguration } from "./lib/types/modules/vtcmconfiguration"
 import { VTCMRealm } from "./lib/types/modules/vtcmrealm"
 import { VTCMSid } from "./lib/types/modules/vtcmsid"
 import { VTIGER_API_USAGE } from "./lib/types"
+import { ConverterService, MappingTypeEnum } from "./lib/services/converter.service"
 
 export type {
   Account,
@@ -113,5 +114,8 @@ const createClient = (
 }
 
 export {
-  createClient, VTigerClient 
+  createClient,
+  VTigerClient,
+  ConverterService,
+  MappingTypeEnum,
 }
