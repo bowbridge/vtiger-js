@@ -46,6 +46,11 @@ import { VTCMSid } from "./lib/types/modules/vtcmsid"
 import { VTIGER_API_USAGE } from "./lib/types"
 import { ConverterService, MappingTypeEnum } from "./lib/services/converter.service"
 
+export {
+  ConverterService,
+  MappingTypeEnum,
+}
+
 export type {
   Account,
   Asset,
@@ -116,6 +121,4 @@ const createClient = (
 export {
   createClient,
   VTigerClient,
-  ConverterService,
-  MappingTypeEnum,
 }
