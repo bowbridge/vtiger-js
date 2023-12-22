@@ -43,7 +43,7 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
    * @returns
    */
   where(field: keyof T, operator: FilterOperator, value: string) {
-    this.query = `${this.query} where ${String(field)} ${operator} '${this._handleValue(operator, value)}'`;
+    this.query = `${this.query} where ${String(field)} ${operator} ${this._handleValue(operator, value)}`;
     return this;
   }
 
@@ -55,7 +55,7 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
    * @returns
    */
   and(field: keyof T, operator: FilterOperator, value: string) {
-    this.query = `${this.query} and ${String(field)} ${operator} '${this._handleValue(operator, value)}'`;
+    this.query = `${this.query} and ${String(field)} ${operator} ${this._handleValue(operator, value)}`;
     return this;
   }
 
@@ -67,7 +67,7 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
    * @returns
    */
   or(field: keyof T, operator: FilterOperator, value: string) {
-    this.query = `${this.query} or ${String(field)} ${operator} '${this._handleValue(operator, value)}'`;
+    this.query = `${this.query} or ${String(field)} ${operator} ${this._handleValue(operator, value)}`;
     return this;
   }
 
@@ -93,8 +93,9 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
       value = `%${value}%`;
     }
     if (operator === 'in') {
-      value = `(${value})`;
+      const result = value.split(',').map(value => `'${value}'`).join(',');
+      return `(${result})`;
     }
-    return value;
+    return `'${value}'`;
   }
 }
