@@ -38,7 +38,7 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
   /**
    *
    * @param field key of the field
-   * @param operator '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like'
+   * @param operator '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like' | 'in'
    * @param value filter value as string
    * @returns
    */
@@ -50,7 +50,7 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
   /**
    *
    * @param field key of the field
-   * @param operator '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like'
+   * @param operator '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like' | 'in'
    * @param value filter value as string
    * @returns
    */
@@ -62,7 +62,7 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
   /**
    *
    * @param field key of the field
-   * @param operator '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like'
+   * @param operator '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like' | 'in'
    * @param value filter value as string
    * @returns
    */
@@ -91,6 +91,9 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
   private _handleValue(operator: FilterOperator, value: string) {
     if (operator === 'like' && !value.includes('%')) {
       value = `%${value}%`;
+    }
+    if (operator === 'in') {
+      value = `(${value})`;
     }
     return value;
   }

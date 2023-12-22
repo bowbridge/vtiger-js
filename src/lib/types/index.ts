@@ -165,7 +165,7 @@ export type VtigerApiResponse<T> = {
   result: T;
 };
 
-export type FilterOperator = '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like';
+export type FilterOperator = '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like' | 'in';
 
 export type VTIGER_API_USAGE = {
   dailylimit: string;
