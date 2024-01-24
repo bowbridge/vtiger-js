@@ -165,7 +165,17 @@ export type VtigerApiResponse<T> = {
   result: T;
 };
 
-export type FilterOperator = '<' | '>' | '<=' | '>=' | '=' | '!=' | 'like' | 'in';
+export type FilterOperator =
+  | '<'
+  | '>'
+  | '<='
+  | '>='
+  | '='
+  | '!='
+  | 'like'
+  | 'in';
+
+export type SortDirection = 'asc' | 'desc';
 
 export type VTIGER_API_USAGE = {
   dailylimit: string;

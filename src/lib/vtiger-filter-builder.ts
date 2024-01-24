@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 import { EndPoint } from './base/endpoints';
-import { FilterOperator, VtigerApiResult } from './types';
+import { FilterOperator, SortDirection, VtigerApiResult } from './types';
 import { VtigerClientHelper } from './vtiger-client-helpers';
 
 export class VtigerFilterBuilder<T> extends VtigerClientHelper {
@@ -43,7 +43,9 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
    * @returns
    */
   where(field: keyof T, operator: FilterOperator, value: string) {
-    this.query = `${this.query} where ${String(field)} ${operator} ${this._handleValue(operator, value)}`;
+    this.query = `${this.query} where ${String(
+      field
+    )} ${operator} ${this._handleValue(operator, value)}`;
     return this;
   }
 
@@ -55,7 +57,9 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
    * @returns
    */
   and(field: keyof T, operator: FilterOperator, value: string) {
-    this.query = `${this.query} and ${String(field)} ${operator} ${this._handleValue(operator, value)}`;
+    this.query = `${this.query} and ${String(
+      field
+    )} ${operator} ${this._handleValue(operator, value)}`;
     return this;
   }
 
@@ -67,10 +71,28 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
    * @returns
    */
   or(field: keyof T, operator: FilterOperator, value: string) {
-    this.query = `${this.query} or ${String(field)} ${operator} ${this._handleValue(operator, value)}`;
+    this.query = `${this.query} or ${String(
+      field
+    )} ${operator} ${this._handleValue(operator, value)}`;
     return this;
   }
 
+  /**
+   *
+   * @param field key of the field
+   * @param direction 'asc' | 'desc'
+   * @returns
+   */
+  orderBy(field: keyof T, direction: SortDirection = 'asc') {
+    this.query = `${this.query} order by ${field} ${direction}`;
+    return this;
+  }
+
+  /**
+   * @param rowCount representing count
+   * @param offset representing offset
+   * @returns
+   */
   limit(rowCount: number = 100, offset: number = 0) {
     if (rowCount < 0) {
       rowCount = 100;
@@ -93,7 +115,10 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
       value = `%${value}%`;
     }
     if (operator === 'in') {
-      const result = value.split(',').map(value => `'${value}'`).join(',');
+      const result = value
+        .split(',')
+        .map(value => `'${value}'`)
+        .join(',');
       return `(${result})`;
     }
     return `'${value}'`;
