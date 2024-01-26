@@ -40,6 +40,7 @@ import { SLA } from "./lib/types/modules/sla"
 import { Tax } from "./lib/types/modules/tax"
 import { WatchPoint } from "./lib/types/modules/watch-point"
 import { VTCMCertificate } from "./lib/types/modules/vtcmcertificate"
+import { VTCMAuthenticationDomain } from "./lib/types/modules/vtcmauthentication-domain"
 import { VTCMConfiguration } from "./lib/types/modules/vtcmconfiguration"
 import { VTCMRealm } from "./lib/types/modules/vtcmrealm"
 import { VTCMSid } from "./lib/types/modules/vtcmsid"
@@ -94,6 +95,7 @@ export type {
   VTCMRealm,
   VTCMSid,
   VTIGER_API_USAGE,
+  VTCMAuthenticationDomain,
 }
 
 /**
@@ -101,6 +103,7 @@ export type {
  * @param url vtiger application url
  * @param username API username
  * @param accesskey API accesskey
+ * @param debug debug mode
  * @returns VTigerClient Instance
  */
 const createClient = (
