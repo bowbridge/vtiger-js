@@ -1,0 +1,35 @@
+export type VTCMAuthenticationDomain = {
+   fld_vtcmauthenticationdomainsname: string
+   createdtime: string
+   modifiedtime: string
+   created_user_id: string
+   assigned_user_id: string
+   modifiedby: string
+   vtcmauthenticationdomainsnumber: string
+   source: string
+   starred: string
+   record_currency_id: string
+   record_conversion_rate: string
+   tags: string
+   fld_provider_2885: string
+   fld_status_2887: string
+   fld_type_2892: string
+   cf_vtcmauthenticationdomains_owner: string
+   isclosed: string
+   fld_ldapdn: string
+   fld_activecontent: string
+   fld_archiveextractor: string
+   fld_clamav: string
+   fld_control: string
+   fld_events: string
+   fld_icap: string
+   fld_log: string
+   fld_mimescan: string
+   fld_quarantine: string
+   fld_scanproxy: string
+   fld_sophos: string
+   fld_trellix: string
+   fld_yara: string
+   id: string
+   record_currency_symbol: string
+}
