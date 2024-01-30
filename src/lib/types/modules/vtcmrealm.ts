@@ -11,12 +11,13 @@ export type VTCMRealm = {
   assigned_user_id: string
   starred: string
   record_currency_id: string
-  record_conversion_rate: string
   cf_vtcmrealms_configurations: string
-  tags: string
+  record_conversion_rate: string
   cf_vtcmrealms_defaultrealmof: string
   cf_vtcmrealms_deployment: string
+  cf_vtcmrealms_authenticationdomain: string
+  cf_vtcmrealms_provider: string
+  cf_vtcmrealms_ldapuserpassword: string
+  cf_vtcmrealms_ldapdn: string
   id: string
-  isclosed: boolean
-  record_currency_symbol: string | null
 }
