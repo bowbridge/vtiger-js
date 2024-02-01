@@ -16,6 +16,7 @@ export type VTCMRealm = {
   cf_vtcmrealms_defaultrealmof: string
   cf_vtcmrealms_deployment: string
   cf_vtcmrealms_authenticationdomain: string
+  cf_vtcmrealms_oldauthenticationdomain: string
   cf_vtcmrealms_provider: string
   cf_vtcmrealms_ldapuserpassword: string
   cf_vtcmrealms_ldapdn: string
