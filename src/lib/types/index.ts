@@ -76,7 +76,8 @@ export type StandardListType =
   | 'vtcmconfigurations'
   | 'vtcmrealms'
   | 'vtcmsids'
-  | 'vtcmauthenticationdomains';
+  | 'vtcmauthenticationdomains'
+  | 'vtcmlicenseassignments';
 
 export type Me = {
   user_name: string;

@@ -1,0 +1,23 @@
+export type VTCMLicenseAssignment = {
+  assigned_user_id: string;
+  cf_vtcmlicenseassignments_license: string;
+  cf_vtcmlicenseassignments_realm: string;
+  cf_vtcmlicenseassignments_sid: string;
+  createdtime: string;
+  created_user_id: string;
+  fld_hostname: string;
+  fld_v3license: string;
+  fld_vtcmlicenseassignmentsname: string;
+  id: string;
+  isclosed: string;
+  modifiedby: string;
+  modifiedtime: string;
+  record_conversion_rate: string;
+  record_currency_id: string;
+  record_currency_symbol: string | null;
+  source: string;
+  starred: string;
+  tags: string;
+  vtcmlicenseassignmentsid: string;
+  vtcmlicenseassignmentsnumber: string;
+};
