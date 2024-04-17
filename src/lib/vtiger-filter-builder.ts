@@ -84,7 +84,7 @@ export class VtigerFilterBuilder<T> extends VtigerClientHelper {
    * @returns
    */
   orderBy(field: keyof T, direction: SortDirection = 'asc') {
-    this.query = `${this.query} order by ${field} ${direction}`;
+    this.query = `${this.query} order by ${String(field)} ${direction}`;
     return this;
   }
 

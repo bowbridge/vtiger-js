@@ -1,20 +1,21 @@
 export type VTCMSid = {
-  fld_vtcmsidsname: string
-  createdtime: string
-  modifiedtime: string
-  created_user_id: string
-  assigned_user_id: string
-  modifiedby: string
-  vtcmsidsnumber: string
-  source: string
-  starred: string
-  record_currency_id: string
-  record_conversion_rate: string
-  tags: string
-  cf_vtcmsids_configurations: string
-  cf_vtcmsids_organization: string
-  cf_vtcmsids_realm: string
-  id: string
-  isclosed: boolean
-  record_currency_symbol: string | null
-}
+  assigned_user_id: string;
+  cf_vtcmsids_configurations: string;
+  cf_vtcmsids_description: string;
+  cf_vtcmsids_organization: string;
+  cf_vtcmsids_realm: string;
+  created_user_id: string;
+  createdtime: string;
+  fld_vtcmsidsname: string;
+  id: string;
+  isclosed: string;
+  modifiedby: string;
+  modifiedtime: string;
+  record_conversion_rate: string;
+  record_currency_id: string;
+  record_currency_symbol: string | null;
+  source: string;
+  starred: string;
+  tags: string;
+  vtcmsidsnumber: string;
+};
