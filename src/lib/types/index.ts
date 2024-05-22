@@ -75,6 +75,7 @@ export type StandardListType =
   | 'vtcmcertificates'
   | 'vtcmconfigurations'
   | 'vtcmrealms'
+  | 'vtcmscanclusters'
   | 'vtcmsids'
   | 'vtcmauthenticationdomains'
   | 'vtcmlicenseassignments';
