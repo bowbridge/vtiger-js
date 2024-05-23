@@ -44,6 +44,7 @@ import { VTCMAuthenticationDomain } from "./lib/types/modules/vtcmauthentication
 import { VTCMConfiguration } from "./lib/types/modules/vtcmconfiguration"
 import { VTCMLicenseAssignment } from "./lib/types/modules/vtcmlicenseassignment"
 import { VTCMRealm } from "./lib/types/modules/vtcmrealm"
+import { VTCMScanCluster } from "./lib/types/modules/vtcmscancluster"
 import { VTCMSid } from "./lib/types/modules/vtcmsid"
 import { VTIGER_API_USAGE } from "./lib/types"
 import { ConverterService, MappingTypeEnum } from "./lib/services/converter.service"
@@ -96,12 +97,13 @@ export type {
   VTCMConfiguration,
   VTCMLicenseAssignment,
   VTCMRealm,
+  VTCMScanCluster,
   VTCMSid,
   VTIGER_API_USAGE
 }
 
 /**
- * 
+ *
  * @param url vtiger application url
  * @param username API username
  * @param accesskey API accesskey
@@ -116,9 +118,9 @@ const createClient = (
 ): VTigerClient => {
 
   let debugStatus = false
-  
+
   if(debug) {
-    debugStatus =debug
+    debugStatus = debug
   }
   return new VTigerClient(getAxiosInstance(url, username, accesskey), debugStatus)
 }
