@@ -21,64 +21,67 @@ export type ListType = {
   information: InformationType;
 };
 
-export type StandardListType =
-  | 'Accounts'
-  | 'Assets'
-  | 'Calendar'
-  | 'Cases'
-  | 'CompanyDetails'
-  | 'Contacts'
-  | 'Currency'
-  | 'DocumentFolders'
-  | 'Documents'
-  | 'EmailCampaigns'
-  | 'Emails'
-  | 'Events'
-  | 'Faq'
-  | 'Groups'
-  | 'Potentials'
-  | 'Products'
-  | 'HelpDesk'
-  | 'PriceBooks'
-  | 'Quotes'
-  | 'PurchaseOrder'
-  | 'SalesOrder'
-  | 'Invoice'
-  | 'Users'
-  | 'ServiceContracts'
-  | 'ModComments'
-  | 'SLA'
-  | 'PrintTemplates'
-  | 'EventForms'
-  | 'Inbox'
-  | 'Forecast'
-  | 'Approvals'
-  | 'Employees'
-  | 'PSLineItems'
-  | 'Reactions'
-  | 'JourneyTemplates'
-  | 'Payments'
-  | 'PhoneCalls'
-  | 'EmailSequence'
-  | 'Emotions'
-  | 'Esign'
-  | 'Import'
-  | 'CreditNotes'
-  | 'Reviews'
-  | 'WatchPoints'
-  | 'WebPages'
-  | 'Consents'
-  | 'LineItem'
-  | 'Tax'
-  | 'ProductTaxes'
-  | 'Roles'
-  | 'vtcmcertificates'
-  | 'vtcmconfigurations'
-  | 'vtcmrealms'
-  | 'vtcmscanclusters'
-  | 'vtcmsids'
-  | 'vtcmauthenticationdomains'
-  | 'vtcmlicenseassignments';
+export const Modules = [
+  'Accounts',
+  'Assets',
+  'Calendar',
+  'Cases',
+  'CompanyDetails',
+  'Contacts',
+  'Currency',
+  'DocumentFolders',
+  'Documents',
+  'EmailCampaigns',
+  'Emails',
+  'Events',
+  'Faq',
+  'Groups',
+  'Potentials',
+  'Products',
+  'HelpDesk',
+  'PriceBooks',
+  'Quotes',
+  'PurchaseOrder',
+  'SalesOrder',
+  'Invoice',
+  'Users',
+  'ServiceContracts',
+  'ModComments',
+  'SLA',
+  'PrintTemplates',
+  'EventForms',
+  'Inbox',
+  'Forecast',
+  'Approvals',
+  'Employees',
+  'PSLineItems',
+  'Reactions',
+  'JourneyTemplates',
+  'Payments',
+  'PhoneCalls',
+  'EmailSequence',
+  'Emotions',
+  'Esign',
+  'Import',
+  'CreditNotes',
+  'Reviews',
+  'WatchPoints',
+  'WebPages',
+  'Consents',
+  'LineItem',
+  'Tax',
+  'ProductTaxes',
+  'Roles',
+  'vtcmcertificates',
+  'vtcmconfigurations',
+  'vtcmrealms',
+  'vtcmscanclusters',
+  'vtcmsids',
+  'vtcmauthenticationdomains',
+  'vtcmlicenseassignments',
+] as const;
+
+export type StandardListType = typeof Modules[number];
 
 export type Me = {
   user_name: string;
