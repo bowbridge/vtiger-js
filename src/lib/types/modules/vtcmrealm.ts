@@ -10,6 +10,7 @@ export type VTCMRealm = {
   cf_vtcmrealms_oldauthenticationdomain: string;
   cf_vtcmrealms_organization: string;
   cf_vtcmrealms_provider: string;
+  cf_vtcmrealms_status: string;
   created_user_id: string;
   createdtime: string;
   fld_realmid: string;
