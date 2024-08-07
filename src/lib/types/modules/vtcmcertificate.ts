@@ -1,4 +1,5 @@
 export type VTCMCertificate = {
+  id: string,
   fld_vtcmcertificatesname: string,
   createdtime: string,
   modifiedtime: string,
