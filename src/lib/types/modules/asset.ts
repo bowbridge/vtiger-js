@@ -43,4 +43,5 @@ export type Asset = {
   description: string
   id: string
   record_currency_symbol: string | null
+  cf_assets_deployas: string
 }
