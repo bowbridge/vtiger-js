@@ -75,4 +75,5 @@ export type Account = {
   record_currency_symbol: string
   cf_accounts_logzioaccountid: string
   cf_accounts_logziosubaccounttoken: string
+  cf_accounts_apikeycontrol: string
 }
