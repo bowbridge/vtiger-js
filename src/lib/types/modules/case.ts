@@ -34,20 +34,22 @@ export type Case = {
   satisfaction_feedback: string
   servicecontract_id: string
   asset_id: string
+  cf_cases_s3uploadmeta: string
+  cf_cases_private: string
   first_response_expectedon: string
   first_response_actualon: string
   sla_closureon: string
   sla_actual_closureon: string
-  slaid: string
   last_responded_on: string
+  slaid: string
   resolution_time: number
   slastatus: string
   current_state_entry_time: string
   time_spent: string
   first_response_status: string
   is_billable: boolean
-  billing_service: string
   rate: string
+  billing_service: string
   is_billed: boolean
   servicetype: string
   servicelocation: string
