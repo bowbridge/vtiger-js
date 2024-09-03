@@ -1,6 +1,7 @@
 export type VTCMSid = {
   assigned_user_id: string;
   cf_vtcmsids_configurations: string;
+  cf_vtcmsids_configurationdifference: string;
   cf_vtcmsids_description: string;
   cf_vtcmsids_organization: string;
   cf_vtcmsids_realm: string;

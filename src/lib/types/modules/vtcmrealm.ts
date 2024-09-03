@@ -2,6 +2,7 @@ export type VTCMRealm = {
   assigned_user_id: string;
   cf_vtcmrealms_authenticationdomain: string;
   cf_vtcmrealms_configurations: string;
+  cf_vtcmrealms_configurationdifference: string;
   cf_vtcmrealms_defaultrealmof: string;
   cf_vtcmrealms_deployment: string;
   cf_vtcmrealms_description: string;
