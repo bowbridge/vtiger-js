@@ -39,8 +39,9 @@ import { ServiceContract } from "./lib/types/modules/service-contract"
 import { SLA } from "./lib/types/modules/sla"
 import { Tax } from "./lib/types/modules/tax"
 import { WatchPoint } from "./lib/types/modules/watch-point"
-import { VTCMCertificate } from "./lib/types/modules/vtcmcertificate"
+import { VTCMAccessControl } from "./lib/types/modules/vtcmaccesscontrol"
 import { VTCMAuthenticationDomain } from "./lib/types/modules/vtcmauthentication-domain"
+import { VTCMCertificate } from "./lib/types/modules/vtcmcertificate"
 import { VTCMConfiguration } from "./lib/types/modules/vtcmconfiguration"
 import { VTCMLicenseAssignment } from "./lib/types/modules/vtcmlicenseassignment"
 import { VTCMRealm } from "./lib/types/modules/vtcmrealm"
@@ -92,6 +93,7 @@ export type {
   Tax,
   User,
   WatchPoint,
+  VTCMAccessControl,
   VTCMAuthenticationDomain,
   VTCMCertificate,
   VTCMConfiguration,

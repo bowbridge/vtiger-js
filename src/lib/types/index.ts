@@ -3,17 +3,19 @@ export type VTigerApiError = {
   code: number;
 };
 
+export type InformationDetails = {
+  isEntity: boolean | string;
+  label: string;
+  singular?: string;
+  name?: string;
+  translated_label?: string;
+  relation_id?: string;
+  actions?: string;
+};
+
 export type InformationType = Record<
-  StandardListType,
-  {
-    isEntity: boolean;
-    label: string;
-    singular?: string;
-    name?: string;
-    translated_label?: string;
-    relation_id?: string;
-    actions?: string;
-  }
+  StandardListType | string,
+  InformationDetails
 >;
 
 export type ListType = {
@@ -21,64 +23,64 @@ export type ListType = {
   information: InformationType;
 };
 
-export type StandardListType =
-  | 'Accounts'
-  | 'Assets'
-  | 'Calendar'
-  | 'Cases'
-  | 'CompanyDetails'
-  | 'Contacts'
-  | 'Currency'
-  | 'DocumentFolders'
-  | 'Documents'
-  | 'EmailCampaigns'
-  | 'Emails'
-  | 'Events'
-  | 'Faq'
-  | 'Groups'
-  | 'Potentials'
-  | 'Products'
-  | 'HelpDesk'
-  | 'PriceBooks'
-  | 'Quotes'
-  | 'PurchaseOrder'
-  | 'SalesOrder'
-  | 'Invoice'
-  | 'Users'
-  | 'ServiceContracts'
-  | 'ModComments'
-  | 'SLA'
-  | 'PrintTemplates'
-  | 'EventForms'
-  | 'Inbox'
-  | 'Forecast'
-  | 'Approvals'
-  | 'Employees'
-  | 'PSLineItems'
-  | 'Reactions'
-  | 'JourneyTemplates'
-  | 'Payments'
-  | 'PhoneCalls'
-  | 'EmailSequence'
-  | 'Emotions'
-  | 'Esign'
-  | 'Import'
-  | 'CreditNotes'
-  | 'Reviews'
-  | 'WatchPoints'
-  | 'WebPages'
-  | 'Consents'
-  | 'LineItem'
-  | 'Tax'
-  | 'ProductTaxes'
-  | 'Roles'
-  | 'vtcmcertificates'
-  | 'vtcmconfigurations'
-  | 'vtcmrealms'
-  | 'vtcmscanclusters'
-  | 'vtcmsids'
-  | 'vtcmauthenticationdomains'
-  | 'vtcmlicenseassignments';
+export const LIST_TYPES = [
+  'Calendar',
+  'Accounts',
+  'Contacts',
+  'Potentials',
+  'Products',
+  'Documents',
+  'Emails',
+  'Faq',
+  'PriceBooks',
+  'Quotes',
+  'PurchaseOrder',
+  'SalesOrder',
+  'Invoice',
+  'Events',
+  'Users',
+  'ServiceContracts',
+  'Assets',
+  'ModComments',
+  'SLA',
+  'Cases',
+  'PrintTemplates',
+  'EventForms',
+  'Inbox',
+  'Forecast',
+  'Approvals',
+  'Employees',
+  'PSLineItems',
+  'Reactions',
+  'Payments',
+  'PhoneCalls',
+  'EmailSequence',
+  'Import',
+  'CreditNotes',
+  'Reviews',
+  'WatchPoints',
+  'Consents',
+  'ProcessDesigner',
+  'EmailTemplates',
+  'AppDesigner',
+  'vtcmcertificates',
+  'vtcmsids',
+  'vtcmconfigurations',
+  'vtcmrealms',
+  'vtcmscanclusters',
+  'vtcmauthenticationdomains',
+  'vtcmlicenseassignments',
+  'vtcmaccesscontrols',
+  'Groups',
+  'Currency',
+  'DocumentFolders',
+  'CompanyDetails',
+  'LineItem',
+  'Tax',
+  'ProductTaxes',
+  'Roles',
+] as const;
+export type StandardListType = typeof LIST_TYPES[number];
 
 export type Me = {
   user_name: string;

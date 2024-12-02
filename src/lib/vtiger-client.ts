@@ -95,10 +95,16 @@ export class VTigerClient extends VtigerClientHelper {
    *
    * @returns Get Data from raw Query
    */
-  public getFromQuery = async <T = any>(rawQuery: string): Promise<VtigerApiResult<T>> => {
+  public getFromQuery = async <T = any>(
+    rawQuery: string
+  ): Promise<VtigerApiResult<T>> => {
     return new Promise<VtigerApiResult<T>>(resolve => {
       this.httpClient
-        .get(`${EndPoint.query}?query=${rawQuery}`)
+        .get(EndPoint.query, {
+          params: {
+            query: rawQuery,
+          },
+        })
         .then(res => {
           resolve({
             ...res.data,
@@ -110,7 +116,6 @@ export class VTigerClient extends VtigerClientHelper {
         });
     });
   };
-
 
   /**
    *
@@ -122,7 +127,11 @@ export class VTigerClient extends VtigerClientHelper {
   ): Promise<VtigerApiResult<MODULE>> => {
     return new Promise<VtigerApiResult<MODULE>>(resolve => {
       this.httpClient
-        .get<VtigerApiResponse<MODULE>>(`${EndPoint.retrieve}?id=${record_id}`)
+        .get<VtigerApiResponse<MODULE>>(EndPoint.retrieve, {
+          params: {
+            id: record_id,
+          },
+        })
         .then(res => {
           resolve({
             ...res.data,
@@ -137,17 +146,19 @@ export class VTigerClient extends VtigerClientHelper {
 
   /**
    *
-   * @param record_id is a string of any  record id in the CRM
    * @returns a single object with the related values.
+   * @param module CRM module name
    */
   public describe = async (
     module: StandardListType
   ): Promise<VtigerApiResult<ModuleDescription>> => {
     return new Promise<VtigerApiResult<ModuleDescription>>(resolve => {
       this.httpClient
-        .get<VtigerApiResponse<ModuleDescription>>(
-          `${EndPoint.describe}?elementType=${module}`
-        )
+        .get<VtigerApiResponse<ModuleDescription>>(EndPoint.describe, {
+          params: {
+            elementType: module,
+          },
+        })
         .then(res => {
           resolve({
             ...res.data,
@@ -162,6 +173,7 @@ export class VTigerClient extends VtigerClientHelper {
 
   /**
    *
+   * @param module CRM module name
    * @param data should be JSON stringified object contains the id
    * @returns the updated object with the success flag
    */
@@ -288,7 +300,11 @@ export class VTigerClient extends VtigerClientHelper {
             types: Partial<StandardListType[]>;
             information: Partial<InformationType>;
           }>
-        >(`${EndPoint.relatedTypes}?elementType=${module}`)
+        >(EndPoint.relatedTypes, {
+          params: {
+            elementType: module,
+          },
+        })
         .then(res => {
           resolve({
             ...res.data,
@@ -301,8 +317,13 @@ export class VTigerClient extends VtigerClientHelper {
     });
   };
 
-  //GET endpoint/retrieve_related?id=record_id&relatedLabel=target_relationship_label&relatedType=target_moduleName
-
+  /**
+   *
+   * @param record_id
+   * @param related_label
+   * @param module CRM module name
+   * @returns
+   */
   public retrieveRelated = async <MODULE = any>(
     record_id: string,
     related_label: string,
@@ -310,9 +331,13 @@ export class VTigerClient extends VtigerClientHelper {
   ): Promise<VtigerApiResult<MODULE[]>> => {
     return new Promise<VtigerApiResult<MODULE[]>>(resolve => {
       this.httpClient
-        .get<VtigerApiResponse<MODULE[]>>(
-          `${EndPoint.retrieveRelated}?id=${record_id}&relatedLabel=${related_label}&relatedType=${module}`
-        )
+        .get<VtigerApiResponse<MODULE[]>>(EndPoint.retrieveRelated, {
+          params: {
+            id: record_id,
+            relatedLabel: related_label,
+            relatedType: module,
+          },
+        })
         .then(res => {
           resolve({
             ...res.data,

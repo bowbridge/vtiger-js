@@ -1,0 +1,21 @@
+export type VTCMAccessControl = {
+  fld_vtcmaccesscontrolsname: string;
+  createdtime: string;
+  modifiedtime: string;
+  created_user_id: string;
+  assigned_user_id: string;
+  modifiedby: string;
+  vtcmaccesscontrolsnumber: string;
+  source: string;
+  starred: string;
+  record_currency_id: string;
+  record_conversion_rate: string;
+  tags: string;
+  fld_permission_3091: string;
+  fld_type_3093: string;
+  cf_vtcmaccesscontrols_realm: string;
+  cf_vtcmaccesscontrols_sid: string;
+  id: string;
+  isclosed: string;
+  record_currency_symbol: string | null;
+};
