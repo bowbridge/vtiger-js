@@ -378,6 +378,94 @@ export class VTigerClient extends VtigerClientHelper {
     });
   };
 
+  /**
+   *
+   * @param sourceRecordId
+   * @param relatedRecordId
+   * @param relationIdLabel
+   * @returns {success: true,  result: { status: "successful" }}
+   */
+  public addRelated = async (
+    sourceRecordId: string,
+    relatedRecordId: string,
+    relationIdLabel: StandardListType,
+  ): Promise<VtigerApiResult<{ status: string }>> => {
+    return new Promise<VtigerApiResult<{ status: string }>>(resolve => {
+      this.httpClient
+        .post<{
+          success: boolean;
+          result: { status: string };
+        }>(EndPoint.addRelated, { sourceRecordId, relatedRecordId, relationIdLabel })
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
+  };
+
+  /**
+   * @param modifiedTime
+   * @param elementType
+   * @param syncType
+   * @returns { success: true,  result: {
+   *   updated: record_id_array,
+   *   deleted: record_id_array,
+   *   more: boolean,
+   *   lastModifiedTime: timestamp
+   *  }}
+   */
+  public sync = async (
+    modifiedTime: number,
+    elementType: StandardListType,
+    syncType: 'user' | 'userandgroup' | 'application' = 'application',
+  ): Promise<
+    VtigerApiResult<{
+      updated: Partial<StandardListType[]>;
+      deleted: Partial<StandardListType[]>;
+      more: boolean;
+      lastModifiedTime: number;
+    }>
+  > => {
+    return new Promise<
+      VtigerApiResult<{
+        updated: Partial<StandardListType[]>;
+        deleted: Partial<StandardListType[]>;
+        more: boolean;
+        lastModifiedTime: number;
+      }>
+    >(resolve => {
+      this.httpClient
+        .get<
+          VtigerApiResponse<{
+            updated: Partial<StandardListType[]>;
+            deleted: Partial<StandardListType[]>;
+            more: boolean;
+            lastModifiedTime: number;
+          }>
+        >(EndPoint.sync, {
+          params: {
+            modifiedTime,
+            elementType,
+            syncType,
+          },
+        })
+        .then(res => {
+          resolve({
+            ...res.data,
+            api_usage: this._generateApiUsageObject(res),
+          });
+        })
+        .catch(err => {
+          resolve(this._returnErrorHandler(err));
+        });
+    });
+  };
+
   private _sanitaizeData = (data: string | object): string => {
     return typeof data === 'string' ? data : JSON.stringify(data);
   };

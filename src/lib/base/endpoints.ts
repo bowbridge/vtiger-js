@@ -11,11 +11,11 @@ export const EndPoint = Object.freeze({
   relatedTypes: '/relatedtypes',
   retrieveRelated: '/retrieve_related',
   deleteRelated: '/delete_related',
+  addRelated: '/add_related',
+  sync: 'sync',
 
   //  ----- Todo -----
   queryRelated: '/query_related',
-  addRelated: '/add_related',
-  sync: 'sync',
   convertLead: '/convertlead',
   reOpen: '/reopen',
   tagsAdd: '/tags_add',
