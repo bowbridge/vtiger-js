@@ -419,22 +419,22 @@ export class VTigerClient extends VtigerClientHelper {
    *   lastModifiedTime: timestamp
    *  }}
    */
-  public sync = async (
+  public sync = async <MODULE = any> (
     modifiedTime: number,
     elementType: StandardListType,
     syncType: 'user' | 'userandgroup' | 'application' = 'application',
   ): Promise<
     VtigerApiResult<{
-      updated: Partial<StandardListType[]>;
-      deleted: Partial<StandardListType[]>;
+      updated: Partial<MODULE []>;
+      deleted: string [];
       more: boolean;
       lastModifiedTime: number;
     }>
   > => {
     return new Promise<
       VtigerApiResult<{
-        updated: Partial<StandardListType[]>;
-        deleted: Partial<StandardListType[]>;
+        updated: Partial<MODULE []>;
+        deleted: string [];
         more: boolean;
         lastModifiedTime: number;
       }>
@@ -442,8 +442,8 @@ export class VTigerClient extends VtigerClientHelper {
       this.httpClient
         .get<
           VtigerApiResponse<{
-            updated: Partial<StandardListType[]>;
-            deleted: Partial<StandardListType[]>;
+            updated: Partial<MODULE []>;
+            deleted: string [];
             more: boolean;
             lastModifiedTime: number;
           }>
