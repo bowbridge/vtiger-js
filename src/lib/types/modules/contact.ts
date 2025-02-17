@@ -92,4 +92,5 @@ export type Contact = {
   consents_last_requested_on: string
   id: string
   record_currency_symbol: string
+  cf_contacts_msprole: string
 }
