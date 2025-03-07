@@ -93,4 +93,5 @@ export type Contact = {
   id: string
   record_currency_symbol: string
   cf_contacts_msprole: string
+  cf_contacts_mspaccesstocustomer: string
 }
