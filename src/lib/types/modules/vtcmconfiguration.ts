@@ -24,3 +24,4 @@ export type VTCMConfiguration = {
     cf_vtcmconfigurations_siddifference: string
     cf_vtcmconfigurations_realmdifference: string
 }
+
