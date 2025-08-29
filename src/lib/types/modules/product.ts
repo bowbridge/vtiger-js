@@ -46,4 +46,17 @@ export type Product = {
   description: string
   id: string
   record_currency_symbol: string | null
+  product_type: string
+  reorder_qty: number
+  availablestock: number
+  committedstock: number
+  incomingstock: number
+  cf_products_deployment: string
+  tax1: number
+  tax5: number
+  currency2: number
+  currency5: number
+  currency6: number
+  currency7: number
+  currency9: number
 }
