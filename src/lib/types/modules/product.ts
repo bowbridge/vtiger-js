@@ -2,7 +2,7 @@ export type Product = {
   productname: string
   productcode: string
   product_no: string
-  discontinued: boolean
+  discontinued: boolean | string
   manufacturer: string
   productcategory: string
   sales_start_date: string
