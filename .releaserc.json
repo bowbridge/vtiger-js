@@ -1,10 +1,7 @@
 {
   "branches": ["main"],
   "plugins": [
-    ["@semantic-release/npm", {
-      "npmPublish": true,
-      "verifyAccess": false
-    }],
+    "@semantic-release/npm",
     "@semantic-release/github"
   ]
 }
