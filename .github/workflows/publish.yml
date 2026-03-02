@@ -46,6 +46,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
+          scope: '@bowbridge'
+          always-auth: true
       - run: npm ci
       - run: npm run semantic-release
         env:
