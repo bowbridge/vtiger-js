@@ -30,7 +30,8 @@
     }
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "prettier": {
     "printWidth": 80,
@@ -57,7 +58,7 @@
     "axios": "^0.24.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^7.0.4",
-    "semantic-release": "^18.0.1",
+    "semantic-release": "^25.0.3",
     "size-limit": "^7.0.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",

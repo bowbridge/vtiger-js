@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [25.x]
 
     steps:
       - uses: actions/checkout@v4
@@ -31,25 +31,26 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
-    needs: [build]
-
+    needs: [ build ]
     permissions:
       contents: write
       issues: write
       pull-requests: write
-      id-token: write
-
+      id-token: write  # Crucial for OIDC
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@bowbridge'
-          always-auth: true
-          auth-token: ${{ github.token }}
+          node-version: ${{ matrix.node-version }} # npm recommends Node 20+ for the best OIDC support
+
       - run: npm ci
-      - run: npm run semantic-release
+
+      - name: Release
+        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: "anything"
