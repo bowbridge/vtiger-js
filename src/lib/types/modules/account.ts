@@ -77,4 +77,5 @@ export type Account = {
   cf_accounts_logziosubaccounttoken: string
   cf_accounts_apikeycontrol: string
   cf_accounts_salesforceid: string
+  cf_accounts_salesforceapikey: string
 }
