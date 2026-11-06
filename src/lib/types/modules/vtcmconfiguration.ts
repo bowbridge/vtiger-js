@@ -23,4 +23,5 @@ export type VTCMConfiguration = {
     record_currency_symbol: string | null
     cf_vtcmconfigurations_siddifference: string
     cf_vtcmconfigurations_realmdifference: string
+    cf_vtcmconfigurations_cdrconfiguration: string
 }
